@@ -1,0 +1,108 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+@font-face {
+    font-family: redressed;
+    src: url(fuentes/Redressed-Regular.ttf);
+}
+body{
+    background-image: repeating-linear-gradient(135deg,steelblue 0 10px,black 10px 20px,red 20px 30px, transparent 30px 200px);
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: redressed;
+}
+.titulo{
+    font-size: clamp(2rem,4vw,4rem);
+    text-align: center;
+    margin-bottom: 1em;
+    text-shadow: 1px 1px white, -1px -1px white;
+}
+
+
+.contenedor{
+    width: clamp(320px,90vw,1400px);
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap:1em;
+    padding-bottom: 2em;
+  
+   
+    
+}
+
+.subtitulo{
+    font-size: clamp(1.5rem,3vw,3rem);
+    width: 100%;
+    margin-bottom: 1em;
+    text-shadow: 1px 1px white, -1px -1px white;
+}
+.control{
+    display: none;
+}
+.filtro{
+    width: calc((100% - 2em)/3);
+    font-size: clamp(1.2rem,2vw,1.6rem);
+    text-align: center;
+    font-weight: bold;
+    background-color: rgba(255,255,255,0.85);
+    padding: 0.5em 1em;
+    border: 2px solid black;
+    border-radius: 0.5em;
+    cursor: pointer;
+}
+.filtro__imagen{
+    width: 10vw;
+    height: 6vw;
+    display: block;
+    margin: 0.5em auto;
+    object-fit: cover;
+    transition: all 0.5s;
+}
+.filtro:hover .filtro__imagen, .control:checked + .filtro .filtro__imagen{
+    transform: scale(1.1);
+    filter: grayscale(1);
+}
+.control:checked + .filtro{
+    border-color: red;
+}
+.galeria{
+    width: 100%;
+    margin-top: 1em;
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(320px,1fr));
+    grid-template-rows: min(320px);
+    gap: 1em;
+    padding: 1em;
+    background-color: white;
+}
+.galeria__imagen{
+    width: 100%;
+    height: 100%;
+    border: 2px solid black;
+    transition: all 0.5s;
+}
+.galeria__imagen:hover{
+    transform: scale(1.2);
+    z-index: 1;
+}
+#costura:checked ~ .galeria :not(.costura){
+    display: none;
+}
+#disenio:checked ~ .galeria :not(.disenio){
+    display: none;
+}
+#peluqueria:checked ~ .galeria :not(.peluqueria){
+    display: none;
+}
+#pc:checked ~ .galeria :not(.pc){
+    display: none;
+}
+@media(min-width:768px){
+    .filtro{
+        width: calc((100% - 4em)/5);
+    }
+}
